@@ -1,0 +1,87 @@
+import pygame
+
+# coding: utf8
+import pygame
+
+# размер окна
+size = [400, 400]
+window = pygame.display.set_mode(size)
+
+# задайте имя
+pygame.display.set_caption("First file")
+
+screen = pygame.Surface(size)
+
+# создание объекта
+square = pygame.Surface([40, 40])
+square.fill([0, 0, 0])
+# right_free = True
+x = 200
+y = 0
+move = 1
+
+class Cube:
+    def __init__(self, x, y, move):
+            self.x = x
+            self.y = y
+            self.move = move
+    def draw_cube(self, x, y):
+        screen.blit(square, [x, y])
+    def fly(self, x, y, move):
+        if move == 1:
+            x += 1
+            if x > 360:
+                move = 3
+            y += 2
+            if y > 360:
+                move = 4
+        if move == 2:
+            x -= 1
+            if x < 0:
+                move = 4
+            y -= 2
+            if y < 0:
+                move = 3
+        if move == 3:
+            x -= 1
+            if x < 0:
+                move = 1
+            y += 2
+            if y > 360:
+                move = 2
+        if move == 4:
+            x += 1
+            if x > 360:
+                move = 2
+            y -= 2
+            if y < 0:
+                move = 1
+        return x, y, move
+
+cube1 = Cube(3, 78, 2)
+cube2 = Cube(12, 231, 1)
+
+
+running = True
+while running:
+    # обработка событий
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
+
+    # задайте фоновый цвет
+    screen.fill([34, 182, 111])
+
+    # движение квадрата
+    cube1.draw_cube(cube1.x, cube1.y)
+    cube2.draw_cube(cube2.x, cube2.y)
+    cube1.x, cube1.y, cube1.move = cube1.fly(cube1.x, cube1.y, cube1.move)
+    cube2.x, cube2.y, cube2.move = cube2.fly(cube2.x, cube2.y, cube2.move)
+    # отображение квадрата
+
+    # отображение окна
+    window.blit(screen, [0, 0])
+    pygame.display.flip()
+    pygame.time.delay(5)
+
+pygame.quit()

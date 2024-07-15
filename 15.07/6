@@ -1,0 +1,117 @@
+import pygame
+
+# coding: utf8
+import pygame
+
+# размер окна
+size = [400, 400]
+window = pygame.display.set_mode(size)
+
+# задайте имя
+pygame.display.set_caption("First file")
+
+screen = pygame.Surface(size)
+
+# создание объекта
+square = pygame.Surface([40, 40])
+square.fill([0, 0, 0])
+# right_free = True
+x = 200
+y = 0
+move = 1
+
+
+class Cube:
+    def __init__(self, x, y, move, low_x_stop, hi_x_stop, low_y_stop, hi_y_stop, speed):
+        self.x = x
+        self.y = y
+        self.move = move
+        self.low_x_stop = low_x_stop
+        self.hi_x_stop = hi_x_stop
+        self.low_y_stop = low_y_stop
+        self.hi_y_stop = hi_y_stop
+
+    def draw_cube(self, x, y):
+        screen.blit(square, [x, y])
+
+    def fly(self, sss):
+        x = sss[0]
+        y = sss[1]
+        move = sss[2]
+        low_x_stop = sss[3]
+        hi_x_stop = sss[4]
+        low_y_stop = sss[5]
+        hi_y_stop = sss[6]
+        speed = sss[7]
+        if move == 1:
+            x += speed
+            if x > hi_x_stop:
+                move = 3
+            y += speed
+            if y > hi_y_stop:
+                move = 4
+        if move == 2:
+            x -= speed
+            if x < low_x_stop:
+                move = 4
+            y -= speed
+            if y < low_y_stop:
+                move = 3
+        if move == 3:
+            x -= speed
+            if x < low_x_stop:
+                move = 1
+            y += speed
+            if y > hi_y_stop:
+                move = 2
+        if move == 4:
+            x += speed
+            if x > hi_x_stop:
+                move = 2
+            y -= speed
+            if y < low_y_stop:
+                move = 1
+        spisok = [x, y, move, low_x_stop, hi_x_stop, low_y_stop, hi_y_stop, speed]
+        return spisok
+
+spisok1 = [100, 100, 2, 0, 160, 0, 160, 3]
+spisok2 = [300, 100, 1, 200, 360, 0, 160, 5]
+spisok3 = [100, 300, 3, 0, 160, 200, 360, 0.2]
+spisok4 = [300, 300, 4, 200, 360, 200, 360, 10]
+cube1 = Cube(100, 100, 2, 0, 160, 0, 160, 3)
+cube2 = Cube(300, 100, 1, 200, 360, 0, 160, 5)
+cube3 = Cube(100, 300, 3, 0, 160, 200, 360, 0.2)
+cube4 = Cube(300, 300, 4, 200, 360, 200, 360, 10)
+
+running = True
+while running:
+    # обработка событий
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
+
+            # задайте фоновый цвет
+    screen.fill([34, 182, 111])
+
+    # движение квадрата
+    sss = spisok1
+    spisok1 = cube1.fly(spisok1)
+    sss = spisok2
+    spisok2 = cube2.fly(spisok2)
+    sss = spisok3
+    spisok3 = cube3.fly(spisok3)
+    sss = spisok4
+    spisok4 = cube4.fly(spisok4)
+    cube1.draw_cube(spisok1[0], spisok1[1])
+    cube2.draw_cube(spisok2[0], spisok2[1])
+    cube3.draw_cube(spisok3[0], spisok3[1])
+    cube4.draw_cube(spisok4[0], spisok4[1])
+
+    # отображение квадрата
+
+    # отображение окна
+    window.blit(screen, [0, 0])
+    pygame.display.flip()
+    pygame.time.delay(5)
+
+pygame.quit()

@@ -1,0 +1,193 @@
+import pygame
+import random
+
+pygame.init()
+
+WHITE = pygame.Color("#FFFFFF")
+BLACK = pygame.Color("#000000")
+font_big = pygame.font.SysFont('Verdana', 20)
+
+class Sprite:
+    def __init__(self, count, filename, textt, text2):
+        self.x = 100
+        self.y = 100
+        self.count = count
+        self.bitmap = pygame.image.load(filename)
+        self.text = font_big.render(textt, True, BLACK)
+        self.text2 = font_big.render(text2, True, BLACK)
+
+    def click(self, x, y):
+        if x - self.x <= 100 and x - self.x > 0 and y - self.y <= 100 and y - self.y > 0:
+            self.count += 1
+            return 1
+        else:
+            return 0
+
+    def render(self):
+        screen.blit(self.bitmap, (self.x, self.y))
+        screen.blit(self.text, [self.x, self.y + 400])
+        screen.blit(self.text2, [self.x, self.y - 30])
+
+
+vse_2016 = Sprite(0, '2016_все.jpg', "Древние", "Мелкие 2016")
+petuh_2016 = Sprite(0, '2016_петух.jpg', "Один из трёх", "Мелкие 2016")
+poz_boska_vpravo = Sprite(0, 'resize_image_0aaf361ed3927416bdfef7785131de12_6699f12d1a0dd.jpg', "Ы!", "Позёмка")
+pte_osen = Sprite(0, 'resize_image_0e308e0aa82255ba80493d636ae1355d_6699f12e6e449.jpg', "Привет", "Птеродактиль")
+zob_gnezdo = Sprite(0, "resize_image_1a018fcff59b7cc1b45195a136ae39dd_6699f12d83566.jpg", "Не трогай ребёнка", "Зобушка")
+lampa_2023 = Sprite(0, "resize_image_1d4bd0ea80fee5c18c084c1e131863df_6699f0071fae3.jpg", "Как он туда залез?!", "Мелкие 2023")
+pte_doroga = Sprite(0, "resize_image_1d9be1ba29139f3fb8135053f91f6cb7_6699f12e85483.jpg", "Жрать!", "Птеродактиль")
+poilka_2023 = Sprite(0, "resize_image_2a1fd51c201abe1d7f3b1b0fefa3499f_6699f007d4e90.jpg", "Выше всех", "Мелкие 2023")
+cloni = Sprite(0, "resize_image_7dfcd4d765f75785f1e021a64b7c4abf_6699f12e64640.jpg", "Клоны. А может, просто сёстры.", "Дымка и Позёмка")
+petuh_2023 = Sprite(0, "resize_image_3a6dce3805ceb38940549b32bd62ce82_6699f0076de48.jpg", "Распушился или распетушился?", "Мелкие 2023")
+poz_lezit = Sprite(0, "resize_image_3ee878647c471853d289e18beb395492_6699f12e4f97b.jpg", "Ы", "Позёмка")
+ryaba_bokom = Sprite(0, "resize_image_4f302c6ac37b71030737291bded97189_6699f19417418.jpg", "Рыжая, но не Искра", "Ряба")
+melkiy_2023_smesnoy = Sprite(0, "resize_image_5cf2b47460aaa572deaa459b29aca85f_6699f006a72b4.jpg", "Сюда смотри", "Мелкие 2023")
+poletela_2023 = Sprite(0, "resize_image_5f0a4916f209328c58a36184530bd8fc_6699f006db37a.jpg", "Побег!", "Мелкие 2023")
+svetlaya_2024 = Sprite(0, "resize_image_5f8507f6483eedda3b2d1f863789c961_6699f19443c4e.jpg", "Безымяшка(", "Светлая")
+dublicat = Sprite(0, "resize_image_06e6083629875c12285aeb4a0ebea650_6699f007c395e.jpg", "Найди оригинал", "Мелкие 2023")
+pas = Sprite(0, "resize_image_6e0c3cedaff286a3ce7a0355e481b148_6699f0075c6d2.jpg", "С праздником!", "Мелкие 2023")
+zob_sheya = Sprite(0, "resize_image_6fe3b9e948b3056a5c2477a755ee2998_6699f12daf874.jpg", "Длинношеее", "Зобушка")
+kra_boska_vpravo = Sprite(0, "resize_image_7edff7d6f6833f380fca1085b1e619cc_6699f12dc6bb8.jpg", "Красотка", "Крапинка")
+prava = Sprite(0, "resize_image_7f3bf36a4c2e612c29be78b45246499e_6699f12e6b535.jpg", "Ветеран", "Правушка")
+fen_sredi_kur = Sprite(0, "resize_image_8d7f1738c3be9f4c81ac8b8c8b5fb15c_6699f19462740.jpg", "Легенда...", "Феникс")
+dim_neft = Sprite(0, "resize_image_8ef3a2c199dab5c30485ef47e3465e5f_6699f12d50b50.jpg", "Нефтяник", "Дымка")
+leva = Sprite(0, "resize_image_09ec4a18ac13bb02c85cc94acf16e8e2_6699f12e2217a.jpg", "Иногда ручная)", "Левушка")
+divan_levo_2024 = Sprite(0, "resize_image_9ff6aa263476278528c0d34bce343e33_6699f00878a0b.jpg", "Шикарно", "Мелкие 2024")
+macro_2023 = Sprite(0, "resize_image_26e95a334b4a0cdcd781e82ecdb711c3_6699f006b9f44.jpg", "Резкость - не главное", "Мелкие 2023")
+eggs_2023 = Sprite(0, "resize_image_28e585933eb92ed08f397c4459f9ccd2_6699f0082c663.jpg", "Среди несбывшихся собратьев", "Мелкие 2023")
+dim_sad = Sprite(0, "resize_image_32d203d422cbf1671846c8df4aa3a8c1_6699f12d22b98.jpg", "Грустная", "Дымка")
+zhara = Sprite(0, "resize_image_34f39ea6a4868e24ce1ed3940515b638_6699f0093f15b.jpg", "Нет, он не умирает. Ему жарко", "Бройлеры 2024")
+zob_krasivo = Sprite(0, "resize_image_50d062dc7a85dc10b5de7ef0e87c9f37_6699f12d895e8.jpg", "Красавица", "Зобушка")
+alm_letit = Sprite(0, "resize_image_53c34bd8123bcf4413c4134695c41fcd_6699f008ddd10.jpg", "Полетел!", "Алмаз")
+pte_rovno = Sprite(0, "resize_image_57a57f25f639a1e2ff713c7b76bba041_6699f12f27ffe.jpg", "Идеальный баланс", "Птеродактиль")
+tem_dummy = Sprite(0, "resize_image_68ee1fb3221e3d13cb35fc3d04741cfa_6699f1945d1e6.jpg", "Ы?", "Темнушка")
+ryaba_camera = Sprite(0, "resize_image_71c7851885414d4a211ababe324ac2cf_6699f19430b54.jpg", "Макросъёмка", "Ряба")
+dim_sheya = Sprite(0, "resize_image_79fe2eb5f724ccbb7f6294ccb4319ab9_6699f12d66c27.jpg", "Аж бородки подлетели", "Дымка")
+bro_lapa = Sprite(0, "resize_image_89c85b275d876b2d714348c881e269ad_6699f009554a6.jpg", "Вот это лапа!", "Бройлеры 2024")
+kra_zima = Sprite(0, "resize_image_93ccd89495a5ee803babdbf4bde8c1bb_6699f12de3d2f.jpg", "Крупноплановец", "Крапинка")
+poz_gnezdo = Sprite(0, "resize_image_388cce6656fd11db132c4ac115ee5197_6699f12e49688.jpg", "Хоть эта несётся", "Позёмка")
+kra_gnezdo = Sprite(0, "resize_image_388cce6656fd11db132c4ac115ee5197_6699f12e49688.jpg", "Несись давай!", "Крапинка")
+kra_camera = Sprite(0, "resize_image_646beec2cac8f3863b4e046a5a51b1c4_6699f12ddfcac.jpg", "Лапушка!", "Крапинка")
+zob_gord = Sprite(0, "resize_image_647c95a6da085116b128e72efdb8e271_6699f12d86589.jpg", "Вытянулась", "Зобушка")
+hoh_boska_vlevo = Sprite(0, "resize_image_678fab8b8594c290029b71514b693766_6699f19472a13.jpg", "Драчунья", "Хохлатка")
+ast_idet = Sprite(0, "resize_image_683a14e1b9959fce84894ced0d3c2936_6699f008c7217.jpg", "Идёт", "Астра")
+dim_egg = Sprite(0, "resize_image_744fddd56cb98a19ecc95ab63071b637_6699f12d6d269.jpg", "Снеслась", "Дымка")
+aya_greben = Sprite(0, "resize_image_817d01e7547d5ef4b450983d915386a5_6699f009176f5.jpg", "Ему откусили гребешинку", "Аякс")
+pte_noyabr = Sprite(0, "resize_image_821bf3bda3d5af30ddcbbda59c69ef36_6699f12ee0086.jpg", "15 ноября 2020...", "Птеродактиль")
+ast_krasivo = Sprite(0, "resize_image_849db2df7e799a39ce09bb8d9ea331ba_6699f00913e57.jpg", "Милота", "Астра")
+dim_pupil = Sprite(0, "resize_image_1210a7f2c91392f317261590950d4096_6699f12d294b5.jpg", "Привет", "Дымка")
+tsipi_2023 = Sprite(0, "resize_image_02195ddc6107a5560f69bdac6ee21200_6699f006efd17.jpg", "Молодой коллектив", "Мелкие 2023")
+letit_2023 = Sprite(0, "resize_image_2319bc3f54c989e0fcc2e3060aa0feb8_6699f007e52fc.jpg", "Полетела!", "Мелкие 2023")
+pes_krasivo = Sprite(0, "resize_image_5395a385c5af1cfda675f4a77dc0d0de_6699f12e39619.jpg", "Молодочка", "Пестрянка")
+pte_zloy = Sprite(0, "resize_image_8650c2f0c6a8ff044fa42d3f328e4365_6699f12e9c2da.jpg", "Злой цыпа", "Птеродактиль")
+eda = Sprite(0, "resize_image_9352befd5b8fee0eab0cadedffcc34f0_6699f0070efbe.jpg", "Эммм...", "Мелкие 2023")
+lapa_2023 = Sprite(0, "resize_image_9383b1afa8344418b619d42df25bd46c_6699f0073046b.jpg", "Кайф", "Мелкие 2023")
+divan_2023 = Sprite(0, "resize_image_9397b18a3061ec68fbaf3cbbb30bec22_6699f00697b2c.jpg", "Фотосессия", "Мелкие 2023")
+dim_gnezdo = Sprite(0, "resize_image_18412f04f842cc7c97faf7433a655bab_6699f12d1e321.jpg", "Надеюсь, несётся", "Дымка")
+leva_ulitsa = Sprite(0, "resize_image_37805bc2352faec920254e25adb8d2d0_6699f12e25329.jpg", "Чистокровная)", "Левушка")
+divan_2024 = Sprite(0, "resize_image_56290e062081f64fd6983e5255b77924_6699f00865d10.jpg", "На расслабоне", "Мелкие 2024")
+troe_2023 = Sprite(0, "resize_image_272388decff6c155168b11cfd00469ec_6699f0080411a.jpg", "Три в ряд!", "Мелкие 2023")
+ofigela_2024 = Sprite(0, "resize_image_376529e9a4710fd341b05afc2dee560e_6699f0089b220.jpg", "Жарко...", "Мелкие 2024")
+tem_divan = Sprite(0, "resize_image_a3dc4ec906870fec8d7b21099c60d099_6699f00852a68.jpg", "Высоко", "Темнушка")
+dim_zhara = Sprite(0, "resize_image_a7fff25394c32fd74773ce3c0444ca7b_6699f12d26370.jpg", "Подняла крылья от жары", "Дымка")
+kri = Sprite(0, "resize_image_ad3355987f306b9a7f706aafb7cafc5a_6699f12e08137.jpg", "Красиво поёт", "Кригер")
+smotrit_2024 = Sprite(0, "resize_image_ae784442f57911100ae651a931e497d6_6699f12dc3bf9.jpg", "Не помню, кто это", "Мелкие 2024")
+para_2020 = Sprite(0, "resize_image_b9a92b8290d2e8ed13501af514698f0c_6699f12e1256b.jpg", "Дуэт 2020", "Пестрянка и Кригер")
+camera_2023 = Sprite(0, "resize_image_b33f3c0cc7debac7bb8ed3d4a3938d12_6699f00784499.jpg", "Аякс или Алмаз", "Мелкие 2023")
+pte_spit = Sprite(0, "resize_image_b967f9e5bde71e6ec98e315085117a59_6699f12f529f1.jpg", "Уснул", "Птеродактиль")
+macro_2024 = Sprite(0, "resize_image_bbba8b0a7cc2af953461dae9c2871aec_6699f0088a138.jpg", "Цыпка", "Мелкие 2024")
+dim_macro = Sprite(0, "resize_image_be7e455af2547dc16a956688952c30c8_6699f12d3ec5e.jpg", "Ультрамакро", "Дымка")
+pte_mesalka = Sprite(0, "resize_image_be16ddfa7f38aad5f4358cc59c5e595c_6699f12ecab8a.jpg", "На бетономешалке", "Птеродактиль")
+prava_gnezdo = Sprite(0, "resize_image_be55b806d752a9b5b89e5271d99b50e7_6699f12e67d50.jpg", "Вот это гребень", "Правушка")
+pte_lezit = Sprite(0, "resize_image_bfff4ee5828e359566f56f32ad483003_6699f12eb7f3a.jpg", "Он следит", "Птеродактиль")
+zob_lisaya = Sprite(0, "resize_image_c6bd9825d27d1ab4ff8e118f8abcb232_6699f12d9e221.jpg", "Лысая", "Зобушка")
+pes_i_pte = Sprite(0, "resize_image_c8964d9269e9b5108207072c586a5316_6699f193f260f.jpg", "Мать и сын", "Пестрянка и Птеродактиль")
+aya_i_alm = Sprite(0, "resize_image_cb6e806872fcf4d254539f833e2fbdf5_6699f0092c593.jpg", "Два брата", "Аякс и Алмаз")
+pes_lapa = Sprite(0, "resize_image_cb957e30edc48527705506392c5d98bf_6699f12e3c165.jpg", "Лапка :(", "Пестрянка")
+zir_2023 = Sprite(0, "resize_image_ce3937c793f2c40a9776cfc5386bd222_6699f006cb6b0.jpg", "Ок", "Мелкие 2023")
+pte_macro = Sprite(0, "resize_image_ceb909c639c822f04a899cfcdde36ad6_6699f12eb52f1.jpg", "Ультрагипермакро", "Птеродактиль")
+petuh_2023_morgaet = Sprite(0, "resize_image_d06f5a1003d9b9d11703250469dfbbba_6699f007aff77.jpg", "Моргает", "Мелкие 2023")
+kri_bokom = Sprite(0, "resize_image_dc5e370639e5db04647287e68f8d3a0d_6699f12e0325e.jpg", "Тройной гребень", "Кригер")
+pes_pobeg = Sprite(0, "resize_image_e7bea20e4d21beb6991eb90c6343ca30_6699f12e45d57.jpg", "На выгуле", "Пестрянка")
+viluplats_2023 = Sprite(0, "resize_image_e63f6fa41432e20d6fca7796eddc8094_6699f00746899.jpg", "Вылупляц", "Мелкие 2023")
+pte_teplitsa = Sprite(0, "resize_image_e138b10c4dadd7a9cc70e774db3e5462_6699f12e88033.jpg", "Залез? Его заставили)))", "Птеродактиль")
+edet_2024 = Sprite(0, "resize_image_e7217420c09a99666dcf4574efe1ffb2_6699f0083e0dd.jpg", "Едет", "Мелкие 2024")
+bro_dvoe = Sprite(0, "resize_image_ec375cdec551973594ee176062665930_6699f0095913b.jpg", "Попы", "Бройлеры 2024")
+bro_ruka = Sprite(0, "resize_image_ed3cbfc8556fa59a149b7f5512e3d024_6699f0095cdf0.jpg", "Ещё маленькая попа", "Бройлеры 2024")
+poz_lezit_2 = Sprite(0, "resize_image_f6af07d803495e1eea4cc00c275d02e9_6699f12e4c35b.jpg", "И снова Зёма", "Позёмка")
+dim_osen = Sprite(0, "resize_image_fa52037a37fb96991baae410a84c200a_6699f00818fb7.jpg", "Чпок", "Дымка")
+ast_zima = Sprite(0, "resize_image_fa7715273228532a1d8ca0352ab44c01_6699f008f2df2.jpg", "На зимовке", "Астра")
+
+SECRET = [zob_lisaya, zhara, dublicat]
+LEGENDARY = [eda, vse_2016, dim_osen, pes_lapa, dim_egg]
+GNEZDA = [dim_gnezdo, zob_gnezdo, poz_gnezdo, kra_gnezdo, prava_gnezdo]
+MACRO = [macro_2023, zob_sheya, kra_camera, smotrit_2024, macro_2024, dim_macro, zir_2023, pte_macro, edet_2024, kra_zima, dim_sheya, ryaba_camera]
+EPIC = [petuh_2016, pas, lampa_2023, pte_rovno, tem_dummy, bro_ruka, viluplats_2023, edet_2024, pte_mesalka, ofigela_2024, pte_osen, zob_krasivo, eggs_2023, fen_sredi_kur, melkiy_2023_smesnoy]
+RARE = [aya_greben, zob_gord, pes_krasivo, pte_zloy, letit_2023, tsipi_2023, petuh_2023_morgaet, ryaba_bokom, divan_levo_2024, cloni, alm_letit, divan_2023, lapa_2023, bro_dvoe, poz_boska_vpravo, petuh_2023, poletela_2023, dim_zhara, kra_boska_vpravo, poilka_2023, pte_spit]
+COMMON = [pte_doroga, poz_lezit, ryaba_bokom, svetlaya_2024, kri, prava, dim_neft, leva, dim_sad, bro_lapa, hoh_boska_vlevo, ast_idet, pte_noyabr, ast_krasivo, dim_pupil, leva_ulitsa, divan_2024, troe_2023, tem_divan, para_2020, camera_2023, pte_mesalka, pte_lezit, pes_i_pte, aya_i_alm, kri_bokom, pes_pobeg, pte_teplitsa, poz_lezit_2, ast_zima]
+
+
+size = [800, 800]
+window = pygame.display.set_mode(size)
+screen = pygame.Surface(size)
+pygame.display.set_caption('CUTIES!')
+
+num = 0
+
+running = True
+x = 0
+code = ''
+
+while running:
+    screen.fill([255, 255, 255])
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
+        elif e.type == pygame.MOUSEBUTTONDOWN and e.button == 1:
+            num = random.randint(1, 1000000)
+            if num >= 1 and num <= 3:
+                x = random.randint(1, len(SECRET))-1
+                code = "secret"
+            elif num >= 4 and num <= 13:
+                x = random.randint(1, len(LEGENDARY))-1
+                code = "legendary"
+            elif num >= 14 and num <= 63:
+                x = random.randint(1, len(GNEZDA))-1
+                code = "gnezda"
+            elif num >= 64 and num <= 663:
+                x = random.randint(1, len(MACRO))-1
+                code = "macro"
+            elif num >= 664 and num <= 8163:
+                x = random.randint(1, len(EPIC))-1
+                code = "epic"
+            elif num >= 665 and num <= 48163:
+                x = random.randint(1, len(RARE))-1
+                code = "rare"
+            elif num >= 664 and num <= 999973:
+                x = random.randint(1, len(COMMON))-1
+                code = "common"
+            else:
+                if num != 0:
+                    code = "broken"
+    if code == "secret":
+        SECRET[x].render()
+    elif code == "legendary":
+        LEGENDARY[x].render()
+    elif code == "gnezda":
+        GNEZDA[x].render()
+    elif code == "macro":
+        MACRO[x].render()
+    elif code == "epic":
+        EPIC[x].render()
+    elif code == "rare":
+        RARE[x].render()
+    elif code == "common":
+        COMMON[x].render()
+    elif code == "broken":
+        pass
+    tx = font_big.render(code, True, BLACK)
+    screen.blit(tx, [30, 600])
+
+    window.blit(screen, [0, 0])
+
+    pygame.display.flip()
